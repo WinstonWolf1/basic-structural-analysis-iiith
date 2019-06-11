@@ -3,3 +3,11 @@
     border-width: thin;
     border-color: red;
 }
+
+#concSFD{
+    max-height: 40vh;
+}
+
+#concBMD{
+    max-height: 40vh;
+}
