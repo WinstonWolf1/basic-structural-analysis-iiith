@@ -17,8 +17,8 @@ function makegraph(vals) {
 
 function testgraph(){
     var loadparams = new Object();
-    loadparams.positions = [50];
-    loadparams.weights = [5];
+    loadparams.positions = [25,null];
+    loadparams.weights = [5000,null];
     var beamLength = 100;
     var vals = calcSFBMConcMid(beamLength, loadparams);
     makegraph(vals);
