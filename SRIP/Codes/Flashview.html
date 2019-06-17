@@ -57,20 +57,20 @@
 -->
 
                 <div class="list-group">
-                    <a href="#" class="list-group-item  list-group-item-action">
+                    <a id="SFBMOneSpanDiv" href="#" class="list-group-item  list-group-item-action active" onclick="selectSFBMOneSpan()">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1 mx-auto">Equal Spans</h5>
                         </div>
                         <p class="mb-1 text-left">Concentrated Load on one span<br>Uniform Distributed Load on one span
                         </p>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a id="SFBMBothSpanDiv" href="#" class="list-group-item list-group-item-action" onclick="selectSFBMBothSpan()">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1 mx-auto">Equal Spans</h5>
                         </div>
                         <p class="mb-1 text-left">Concentrated Loads on both spans<br>UDL on both spans</p>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a id="SFBMUneqSpanDiv" href="#" class="list-group-item list-group-item-action" onclick="selectSFBMUneqSpan()">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1 mx-auto">Unequal Spans</h5>
                         </div>
@@ -118,7 +118,7 @@
         <!-- Bootstrap Offline -->
         <!-- <script src="../Libraries/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js" -->
 
-        <button class='btn btn-primary btn-block fixed-bottom' onclick="testgraph()">Make graph!</button>
+        <button id="makeGraphButton" class='btn btn-primary btn-block fixed-bottom' onclick="makegraph('SFBMOneSpan')">Make graph!</button>
         <!-- <button class='btn btn-dark btn-lg btn-block fixed-bottom' onclick="location.reload();">Refresh Page</button> -->
     </body>
 

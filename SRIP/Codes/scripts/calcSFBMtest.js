@@ -70,18 +70,18 @@ function calcSFBMConcMid(beamLength, loads){
 }
 
 function calcSFBMConcMidUneq(beamLength, loads, middleSupportPos){
-	var n = 5000; //Number of discretisations of x axis
-	var delta_x = beamLength / n; // Value to increment x
-	var values_x = new Array(n+1);
-	var shearForce = new Array(n+1);
-	var bendMoment = new Array(n+1);
-	var supportRxns = new Array(3);
-	var spanLength = [middleSupportPos, (beamLength - middleSupportPos)];
+	let n = 5000; //Number of discretisations of x axis
+	let delta_x = beamLength / n; // Value to increment x
+	let values_x = new Array(n+1);
+	let shearForce = new Array(n+1);
+	let bendMoment = new Array(n+1);
+	let supportRxns = new Array(3);
+	let spanLength = [middleSupportPos, (beamLength - middleSupportPos)];
 	
-	var loadPos = loads.positions;
-	var loadWt = loads.weights;
+	let loadPos = loads.positions;
+	let loadWt = loads.weights;
 
-	var midSupportMoment = -3 * ((loadWt[0] * (spanLength[0] * spanLength[0]) + loadWt[1] * (spanLength[1] * spanLength[1])) / (spanLength[0] + spanLength[1])) / 16;
+	let midSupportMoment = -3 / 16 * ((loadWt[0] * (spanLength[0] ** 2) + loadWt[1] * (spanLength[1] ** 2)) / (spanLength[0] + spanLength[1]));
 	supportRxns[0] = ((midSupportMoment / spanLength[0]) + (loadWt[0] / 2));
 	supportRxns[2] = ((midSupportMoment / spanLength[1]) + (loadWt[1] / 2));
 	supportRxns[1] = loadWt[0] + loadWt[1] - supportRxns[0] - supportRxns[2];
@@ -119,18 +119,18 @@ function calcSFBMConcMidUneq(beamLength, loads, middleSupportPos){
 
 function calcSFBMUDLMid(beamLength, loads) {
 	
-	var n = 5000; //Number of discretisations of x axis
-	var delta_x = beamLength / n; // Value to increment x
-	var values_x = new Array(n+1);
-	var shearForce = new Array(n+1);
-	var bendMoment = new Array(n+1);
-	var supportRxns = new Array(3);
+	let n = 5000; //Number of discretisations of x axis
+	let delta_x = beamLength / n; // Value to increment x
+	let values_x = new Array(n+1);
+	let shearForce = new Array(n+1);
+	let bendMoment = new Array(n+1);
+	let supportRxns = new Array(3);
 
-	var spanLength = beamLength / 2;
+	let spanLength = beamLength / 2;
 	
-	var loadWt = loads.weights;
+	let loadWt = loads.weights;
 
-	var middleSupportPos = beamLength / 2;
+	let middleSupportPos = beamLength / 2;
 
 	if(loadWt[1] === null){
 		supportRxns[0] =  7 * loadWt[0] * spanLength / 16;
@@ -159,8 +159,8 @@ function calcSFBMUDLMid(beamLength, loads) {
 			bendMoment : bendMoment};    
 }
 
-function getportion(x, beamLength, loadPos, middleSupportPos = undefined){
-	if(middleSupportPos === undefined){
+function getportion(x, beamLength, loadPos, middleSupportPos = null){
+	if(middleSupportPos === null){
 		middleSupportPos = beamLength / 2;
 	}
 	if(x < loadPos[0]){
@@ -169,16 +169,16 @@ function getportion(x, beamLength, loadPos, middleSupportPos = undefined){
 	if(x < middleSupportPos){
 		return 2;
 	}
-	if(loadPos[1] !== undefined){
+	if(loadPos[1] === null){
+		if(x < beamLength){
+			return 3;
+		}
+	} else{
 		if(x < loadPos[1]){
 			return 3;
 		}
-		if(x < beamLength){
+		else{
 			return 4;
-		}
-	} else{
-		if(x < beamLength){
-			return 3;
 		}
 	}
 }
