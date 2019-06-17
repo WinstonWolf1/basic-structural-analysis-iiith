@@ -132,22 +132,27 @@ function calcSFBMUDLMid(beamLength, loads) {
 
 	let middleSupportPos = beamLength / 2;
 
-	if(loadWt[1] === null){
+	if(loadWt[1] == null){
 		supportRxns[0] =  7 * loadWt[0] * spanLength / 16;
 		supportRxns[1] = 10 * loadWt[0] * spanLength / 16;
 		supportRxns[2] = -1 * loadWt[0] * spanLength / 16;
-		middleSupportPos = beamLength / 2;
+		loadWt[1] = 0;
+	}
+	if(loadWt[1] !== null && loadWt[1] === loadWt[0]){
+		supportRxns[0] =  6 * loadWt[0] * spanLength / 16;
+		supportRxns[1] = 20 * loadWt[0] * spanLength / 16;
+		supportRxns[2] =  6 * loadWt[0] * spanLength / 16;
 	}
 
 	for(let i = 0; i < n; i++){
 		values_x[i] = (i * delta_x);
 		if (values_x[i] < middleSupportPos) {
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x);
-			bendMoment[i] = supportRxns[0] * values_x[i] - (loadWt[0] * values_x[i] * values_x[i]);
+			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]);
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] ** 2) / 2);
 		}
 		else{
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x) + supportRxns[1] + (loadWt[1] * (values_x[i] - spanLength));
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * values_x[i] * values_x[i]) + (supportRxns[1] * (values_x[i] - spanLength)) + (loadWt[1] * (values_x[i] - spanLength) * (values_x[i] - spanLength));
+			shearForce[i] = supportRxns[0] - (loadWt[0] * spanLength) + supportRxns[1] - (loadWt[1] * (values_x[i] - spanLength));
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength * (values_x[i] - spanLength)) + (supportRxns[1] * (values_x[i] - spanLength)) - (loadWt[1] * ((values_x[i] - spanLength) ** 2));
 		}
 	}
 	values_x[n] = beamLength;
@@ -157,6 +162,43 @@ function calcSFBMUDLMid(beamLength, loads) {
 	return {values_x : values_x,
 			shearForce : shearForce,
 			bendMoment : bendMoment};    
+}
+
+function calcSFBMUDLMidUneq(beamLength, loads, middleSupportPos){
+	let n = 5000; //Number of discretisations of x axis
+	let delta_x = beamLength / n; // Value to increment x
+	let values_x = new Array(n+1);
+	let shearForce = new Array(n+1);
+	let bendMoment = new Array(n+1);
+	let supportRxns = new Array(3);
+	let spanLength = [middleSupportPos, (beamLength - middleSupportPos)];
+	
+	let loadWt = loads.weights;
+
+	let midSupportMoment = -loadWt[0] / 8 * ((spanLength[0] ** 3 + spanLength[1] ** 3) / (beamLength));
+	supportRxns[0] = ((midSupportMoment / spanLength[0]) + (loadWt[0] * spanLength[0] / 2));
+	supportRxns[2] = ((midSupportMoment / spanLength[1]) + (loadWt[0] * spanLength[1] / 2));
+	supportRxns[1] = loadWt[0] * (beamLength) - supportRxns[0] - supportRxns[2];
+
+	for(let i = 0; i < n; i++){
+		values_x[i] = (i * delta_x);
+		if (values_x[i] < middleSupportPos) {
+			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]);
+			bendMoment[i] = supportRxns[0] * values_x[i] - (loadWt[0] * (values_x ** 2));
+		}
+		else{
+			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]) + supportRxns[1] + (loadWt[1] * (values_x[i] - spanLength));
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * values_x[i] * values_x[i]) + (supportRxns[1] * (values_x[i] - spanLength)) + (loadWt[1] * (values_x[i] - spanLength) * (values_x[i] - spanLength));
+		}
+	}
+	values_x[n] = beamLength;
+	shearForce[n] = 0;
+	bendMoment[n] = 0;
+
+
+	return {values_x : values_x,
+			shearForce : shearForce,
+			bendMoment : bendMoment};
 }
 
 function getportion(x, beamLength, loadPos, middleSupportPos = null){

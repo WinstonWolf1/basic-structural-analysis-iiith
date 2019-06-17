@@ -1,13 +1,16 @@
-function showgraph(vals) {
-    var values_x = vals['values_x'];
-    var shearForce = vals['shearForce'];
-    var bendMoment = vals['bendMoment'];
-    Plotly.plot('concSFD',[{
+function showgraph(type, vals) {
+    let values_x = vals['values_x'];
+    let shearForce = vals['shearForce'];
+    let bendMoment = vals['bendMoment'];
+
+    let SFdivID = type + "SFD";
+    let BMdivID = type + "BMD";
+    Plotly.plot(SFdivID,[{
         x : values_x,
         y : shearForce
     }]);
 
-    Plotly.plot('concBMD',[{
+    Plotly.plot(BMdivID,[{
         x : values_x,
         y : bendMoment
     }]);
@@ -15,28 +18,50 @@ function showgraph(vals) {
     return;
 }
 
-function makegraph(graphType){
-    var loadparams = new Object();
-    var beamLength = 100;
+function makeDemoGraphs(graphType){
+    clearGraphs();
+
+    let concLoadParams = new Object();
+    let UDLoadParams = new Object();
+    let beamLength = 100;
     switch (graphType){
         case "SFBMOneSpan":
-            loadparams.positions = [(beamLength / 4), null];
-            loadparams.weights = [5000, null];
-            var vals = calcSFBMConcMid(beamLength, loadparams);
+
+            concLoadParams.positions = [(beamLength / 4), null];
+            concLoadParams.weights = [5000, null];
+
+            UDLoadParams.weights = [2, null];
+
+            var concVals = calcSFBMConcMid(beamLength, concLoadParams);
+            var UDVals = calcSFBMUDLMid(beamLength, UDLoadParams);
+
             break;
+
         case "SFBMBothSpan":
-            loadparams.positions = [(beamLength / 4), (3 * beamLength / 4)];
-            loadparams.weights = [5000, 5000];
-            var vals = calcSFBMConcMid(beamLength, loadparams);
+            concLoadParams.positions = [(beamLength / 4), (3 * beamLength / 4)];
+            concLoadParams.weights = [5000, 5000];
+
+            UDLoadParams.weights = [2000, 2000];
+
+            var concVals = calcSFBMConcMid(beamLength, concLoadParams);
+            var UDVals = calcSFBMUDLMid(beamLength, UDLoadParams);
+
             break;
+
         case "SFBMUneqSpan":
             let middleSupportPos = 60;
-            loadparams.positions = [(middleSupportPos / 2), ((beamLength + middleSupportPos) / 2)]; // Assuming middle support at 60
-            loadparams.weights = [5000, 6000];
-            var vals = calcSFBMConcMidUneq(beamLength, loadparams, middleSupportPos);
+
+            concLoadParams.positions = [(middleSupportPos / 2), ((beamLength + middleSupportPos) / 2)];
+            concLoadParams.weights = [5000, 6000];
+
+            UDLoadParams.weights = [2000, null];
+
+            var concVals = calcSFBMConcMidUneq(beamLength, concLoadParams, middleSupportPos);
+            var UDVals = calcSFBMUDLMidUneq(beamLength, UDLoadParams, middleSupportPos);
             break;
     }
-    showgraph(vals);
+    showgraph("conc", concVals);
+    showgraph("UD", UDVals);
 }
 
 function testgraph(){
@@ -51,24 +76,26 @@ function testgraph(){
 function selectSFBMOneSpan(){
     clearGraphs();
     makeActive('SFBMOneSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makegraph('SFBMOneSpan')");
+    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMOneSpan')");
 }
 
 function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makegraph('SFBMBothSpan')");
+    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMBothSpan')");
 }
 
 function selectSFBMUneqSpan(){
     clearGraphs();
     makeActive('SFBMUneqSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makegraph('SFBMUneqSpan')");
+    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMUneqSpan')");
 }
 
 function clearGraphs(){
     Plotly.purge("concSFD");
     Plotly.purge("concBMD");
+    Plotly.purge("UDSFD");
+    Plotly.purge("UDBMD");
 }
 
 function makeActive(divID){
