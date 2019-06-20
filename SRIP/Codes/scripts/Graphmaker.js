@@ -5,6 +5,9 @@ function showgraph(type, vals) {
 
     let SFdivID = type + "SFD";
     let BMdivID = type + "BMD";
+
+    let plotLayoutOptions = {};
+
     Plotly.plot(SFdivID,[{
         x : values_x,
         y : shearForce
@@ -62,6 +65,7 @@ function makeDemoGraphs(graphType){
     }
     showgraph("conc", concVals);
     showgraph("UD", UDVals);
+    document.getElementById("makeGraphButton").disabled = true;
 }
 
 function testgraph(){
@@ -103,4 +107,6 @@ function makeActive(divID){
     document.getElementById("SFBMBothSpanDiv").classList.remove("active");
     document.getElementById("SFBMUneqSpanDiv").classList.remove("active");
     document.getElementById(divID).classList.add("active");
+    document.getElementById("makeGraphButton").disabled = false;
 }
+
