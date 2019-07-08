@@ -27,6 +27,14 @@
 
 #controlBoxDiv{
     padding-top: 1rem;
-    /* position: absolute; */
-    bottom: 0%;
+    /* position: absolute;
+    bottom: 0%; */
+    /* position:absolute;
+    bottom:0;
+    width:100%; */
+}
+
+table{
+    border-collapse: separate;
+    border-spacing: 0.5rem;
 }
