@@ -1,7 +1,8 @@
-#content-box {
-    border-style: solid;
+#contentBox {
+    /* border-style: solid;
     border-width: thin;
-    border-color: red;
+    border-color: red; */
+    height:100vh;
 }
 
 #concSFD{
@@ -18,4 +19,14 @@
 
 #UDBMD{
     max-height: 45vh;
+}
+
+#beamAnimation{
+    height: 70vh;
+}
+
+#controlBoxDiv{
+    padding-top: 1rem;
+    /* position: absolute; */
+    bottom: 0%;
 }
