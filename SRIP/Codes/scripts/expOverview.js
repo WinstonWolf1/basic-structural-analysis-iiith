@@ -8,12 +8,12 @@ function showgraph(type, vals) {
 
     let plotLayoutOptions = {};
 
-    Plotly.plot(SFdivID,[{
+    Plotly.newPlot(SFdivID,[{
         x : values_x,
         y : shearForce
     }]);
 
-    Plotly.plot(BMdivID,[{
+    Plotly.newPlot(BMdivID,[{
         x : values_x,
         y : bendMoment
     }]);
