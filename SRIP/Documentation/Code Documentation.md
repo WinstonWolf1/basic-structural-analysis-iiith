@@ -40,7 +40,7 @@ This document captures the experiment implementation details.
 
     **Function Description :** Plots the Shear Force and Bending Moment diagrams in a Plotly plot in the specified divs on the page. The object from the calcSFBM file calculation functions are used which contain the arrays of the shear force and bending moment at the values of x.
 
-* **Function :** makeDemoGraphs
+* **Function :** generateDiagrams
 
     **Function Description :** This is the main driver function. When the 'Generate Diagrams' button is clicked, this function calls the functions to calculate the SFD and BMD based on the selected parameters in the left pane. It also disabled the Generate Diagrams button after the diagrams have been generated.
 

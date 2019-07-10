@@ -21,7 +21,7 @@ function showgraph(type, vals) {
     return;
 }
 
-function makeDemoGraphs(graphType){
+function generateDiagrams(graphType){
     clearGraphs();
 
     let concLoadParams = new Object();
@@ -80,19 +80,19 @@ function testgraph(){
 function selectSFBMOneSpan(){
     clearGraphs();
     makeActive('SFBMOneSpanDiv');
-    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMOneSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMOneSpan')");
 }
 
 function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
-    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMBothSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMBothSpan')");
 }
 
 function selectSFBMUneqSpan(){
     clearGraphs();
     makeActive('SFBMUneqSpanDiv');
-    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMUneqSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMUneqSpan')");
 }
 
 function clearGraphs(){
