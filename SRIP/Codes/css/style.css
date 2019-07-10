@@ -38,3 +38,7 @@ table{
     border-collapse: separate;
     border-spacing: 0.5rem;
 }
+
+#concForceDiagram #UDForceDiagram{
+    display: none;
+}
