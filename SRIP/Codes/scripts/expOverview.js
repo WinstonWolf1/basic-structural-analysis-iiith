@@ -65,7 +65,7 @@ function makeDemoGraphs(graphType){
     }
     showgraph("conc", concVals);
     showgraph("UD", UDVals);
-    document.getElementById("makeGraphButton").disabled = true;
+    document.getElementById("generateDiagramButton").disabled = true;
 }
 
 function testgraph(){
@@ -80,19 +80,19 @@ function testgraph(){
 function selectSFBMOneSpan(){
     clearGraphs();
     makeActive('SFBMOneSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMOneSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMOneSpan')");
 }
 
 function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMBothSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMBothSpan')");
 }
 
 function selectSFBMUneqSpan(){
     clearGraphs();
     makeActive('SFBMUneqSpanDiv');
-    document.getElementById("makeGraphButton").setAttribute("onClick", "makeDemoGraphs('SFBMUneqSpan')");
+    document.getElementById("generateDiagramButton").setAttribute("onClick", "makeDemoGraphs('SFBMUneqSpan')");
 }
 
 function clearGraphs(){
@@ -107,6 +107,6 @@ function makeActive(divID){
     document.getElementById("SFBMBothSpanDiv").classList.remove("active");
     document.getElementById("SFBMUneqSpanDiv").classList.remove("active");
     document.getElementById(divID).classList.add("active");
-    document.getElementById("makeGraphButton").disabled = false;
+    document.getElementById("generateDiagramButton").disabled = false;
 }
 
