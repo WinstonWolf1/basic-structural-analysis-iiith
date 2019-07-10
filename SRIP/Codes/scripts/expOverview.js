@@ -6,17 +6,19 @@ function showgraph(type, vals) {
     let SFdivID = type + "SFD";
     let BMdivID = type + "BMD";
 
-    let plotLayoutOptions = {};
+    let plotOptions = {
+        displayModeBar: false
+    };
 
     Plotly.newPlot(SFdivID,[{
         x : values_x,
         y : shearForce
-    }]);
+    }],{title:"Shear Force Diagram"},plotOptions);
 
     Plotly.newPlot(BMdivID,[{
         x : values_x,
         y : bendMoment
-    }]);
+    }],{title:"Bending Moment Diagram"},plotOptions);
 
     return;
 }
