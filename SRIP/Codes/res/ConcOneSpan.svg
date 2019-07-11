@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="107.505154639182 270.75256921113544 426.98969072163607 108.74227885250224" width="422.99" height="104.74"><defs><path d="M125 313.14L515 313.14L515 336.14L125 336.14L125 313.14Z" id="ammSdKU6x"></path><path d="M141.49 359.52L125 343.51L108.51 359.52L118.96 359.52L118.96 376.49L131.06 376.49L131.06 359.52L141.49 359.52Z" id="a5C2jRSBzu"></path><path d="M336.49 359.52L320 343.51L303.51 359.52L313.96 359.52L313.96 376.49L326.06 376.49L326.06 359.52L336.49 359.52Z" id="b1XmzlVXLm"></path><path d="M531.49 359.52L515 343.51L498.51 359.52L508.96 359.52L508.96 376.49L521.06 376.49L521.06 359.52L531.49 359.52Z" id="a5oXDjUVC"></path><path d="M206.01 288.73L222.51 304.74L239 288.73L228.54 288.73L228.54 271.75L216.44 271.75L216.44 288.73L206.01 288.73Z" id="dlCO6uHBZ"></path></defs><g><g><use xlink:href="#ammSdKU6x" opacity="1" fill="#ffffff" fill-opacity="1"></use><g><use xlink:href="#ammSdKU6x" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="5" stroke-opacity="1"></use></g></g><g><use xlink:href="#a5C2jRSBzu" opacity="1" fill="#000000" fill-opacity="1"></use></g><g><use xlink:href="#b1XmzlVXLm" opacity="1" fill="#000000" fill-opacity="1"></use></g><g><use xlink:href="#a5oXDjUVC" opacity="1" fill="#000000" fill-opacity="1"></use></g><g><use xlink:href="#dlCO6uHBZ" opacity="1" fill="#000000" fill-opacity="1"></use></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="423" height="105" version="1" viewBox="108 271 427 109">
+  <defs>
+    <path id="a" d="M125 313h390v23H125v-23z"/>
+    <path id="b" d="M141 360l-16-16-16 16h10v16h12v-16h10z"/>
+    <path id="c" d="M336 360l-16-16-16 16h10v16h12v-16h10z"/>
+    <path id="d" d="M531 360l-16-16-16 16h10v16h12v-16h10z"/>
+    <path id="e" d="M206 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+  </defs>
+  <use fill="#fff" xlink:href="#a"/>
+  <use fill-opacity="0" stroke="#000" stroke-width="5" xlink:href="#a"/>
+  <use xlink:href="#b"/>
+  <use xlink:href="#c"/>
+  <use xlink:href="#d"/>
+  <g>
+    <use xlink:href="#e"/>
+  </g>
+</svg>
