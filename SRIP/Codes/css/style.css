@@ -44,3 +44,24 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Moved to svg files */
+/* @keyframes vertOscillate {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-3%);
+    }
+}
+
+.loadIllusArrow {
+    animation-name: vertOscillate;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+} */

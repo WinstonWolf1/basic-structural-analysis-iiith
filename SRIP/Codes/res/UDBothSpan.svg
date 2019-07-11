@@ -1,21 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="423" height="105" version="1" viewBox="108 271 427 109">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="423" height="150" version="1" viewBox="108 271 427 109">
+  <style>
+    @keyframes vertOscillate {
+      0%, 100%{
+        transform: translateY(0);
+      }
+      50%{
+        transform: translateY(-10%);
+      }
+    }
+
+    .loadIllusArrow {
+      animation-name: vertOscillate;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-delay: 0s;
+      animation-direction: normal;
+      animation-iteration-count: infinite;
+      animation-fill-mode: none;
+      animation-play-state: running;
+    }
+  </style>
   <defs>
     <path id="a" d="M125 313h390v23H125v-23z"/>
     <path id="b" d="M141 360l-16-16-16 16h10v16h12v-16h10z"/>
     <path id="c" d="M336 360l-16-16-16 16h10v16h12v-16h10z"/>
     <path id="d" d="M531 360l-16-16-16 16h10v16h12v-16h10z"/>
-    <path id="e" d="M191 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="f" d="M158 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="g" d="M125 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="h" d="M287 289l17 16 16-16h-10v-17h-13v17h-10z"/>
-    <path id="i" d="M254 289l17 16 16-16h-10v-17h-13v17h-10z"/>
-    <path id="j" d="M221 289l17 16 16-16h-10v-17h-13v17h-10z"/>
-    <path id="k" d="M386 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="l" d="M353 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="m" d="M320 289l16 16 17-16h-10v-17h-13v17h-10z"/>
-    <path id="n" d="M482 289l17 16 16-16h-10v-17h-13v17h-10z"/>
-    <path id="o" d="M449 289l17 16 16-16h-10v-17h-13v17h-10z"/>
-    <path id="p" d="M416 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="e" d="M191 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="f" d="M158 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="g" d="M125 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="h" d="M287 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="i" d="M254 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="j" d="M221 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="k" d="M386 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="l" d="M353 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="m" d="M320 289l16 16 17-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="n" d="M482 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="o" d="M449 289l17 16 16-16h-10v-17h-13v17h-10z"/>
+    <path class="loadIllusArrow" id="p" d="M416 289l17 16 16-16h-10v-17h-13v17h-10z"/>
   </defs>
   <use fill="#fff" xlink:href="#a"/>
   <use fill-opacity="0" stroke="#000" stroke-width="5" xlink:href="#a"/>
