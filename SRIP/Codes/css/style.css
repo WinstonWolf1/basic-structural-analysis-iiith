@@ -39,6 +39,8 @@ table{
     border-spacing: 0.5rem;
 }
 
-#concForceDiagram #UDForceDiagram{
-    display: none;
+#concForceDiagram, #UDForceDiagram{
+    /* display: none; */
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -83,18 +83,24 @@ function selectSFBMOneSpan(){
     clearGraphs();
     makeActive('SFBMOneSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMOneSpan')");
+    document.getElementById("concForceDiagram").setAttribute("src", "res/ConcOneSpan.svg")
+    document.getElementById("UDForceDiagram").setAttribute("src", "res/UDOneSpan.svg")
 }
 
 function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMBothSpan')");
+    document.getElementById("concForceDiagram").setAttribute("src", "res/ConcBothSpan.svg")
+    document.getElementById("UDForceDiagram").setAttribute("src", "res/UDBothSpan.svg")
 }
 
 function selectSFBMUneqSpan(){
     clearGraphs();
     makeActive('SFBMUneqSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMUneqSpan')");
+    document.getElementById("concForceDiagram").setAttribute("src", "res/ConcUneqSpan.svg")
+    document.getElementById("UDForceDiagram").setAttribute("src", "res/UDUneqSpan.svg")
 }
 
 function clearGraphs(){
