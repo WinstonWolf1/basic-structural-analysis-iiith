@@ -87,7 +87,7 @@
                             Concentrated Loads
                             <div id="ConcSFBMD">
                                 <div class="col">
-                                    <div id="concForceDiagramDiv" class="row"><img id="concForceDiagram" src="res/ConcOneSpan.svg" alt="Illustration for position of Load"></div>
+                                    <div id="concForceDiagramDiv" class="row"><object id="concForceDiagram" type="image/svg+xml" data="res/ConcOneSpan.svg"></object></div>
                                     <div id="concBeamDeflectionDiag" class="row"></div>
                                     <div id="concSFD" class="row"></div>
                                     <div id="concBMD" class="row"></div>
@@ -97,17 +97,25 @@
                         <div class="col-sm-6 border">
                             UDL
                             <div id="UDSFBMD">
-                                <div id="UDForceDiagramDiv" class="row"><img id="UDForceDiagram" src="res/UDOneSpan.svg" alt="Illustration for position of Load"></div>
-                                <div id="UDBeamDeflectionDiagram" class="row"></div>
-                                <div id="UDSFD" class="row"></div>
-                                <div id="UDBMD" class="row"></div>
+                                <div class="col">
+                                    <div id="UDForceDiagramDiv" class="row"><object id="UDForceDiagram" type="image/svg+xml" data="res/UDOneSpan.svg"></object></div>
+                                    <div id="UDBeamDeflectionDiagram" class="row"></div>
+                                    <div id="UDSFD" class="row"></div>
+                                    <div id="UDBMD" class="row"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
+        
+        <button id="generateDiagramButton" class='btn btn-primary btn-block fixed-bottom' onclick="generateDiagrams('SFBMOneSpan')">Generate Diagrams!</button>
+        
+        <!-- <button class='btn btn-dark btn-lg btn-block fixed-bottom' onclick="location.reload();">Refresh Page</button> -->
+        
+        
         <!--Bootstrap CDN-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -121,9 +129,6 @@
 
         <!-- Bootstrap Offline -->
         <!-- <script src="../Libraries/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script> -->
-
-        <button id="generateDiagramButton" class='btn btn-primary btn-block fixed-bottom' onclick="generateDiagrams('SFBMOneSpan')">Generate Diagrams!</button>
-        <!-- <button class='btn btn-dark btn-lg btn-block fixed-bottom' onclick="location.reload();">Refresh Page</button> -->
     </body>
 
     </html>
