@@ -35,7 +35,7 @@ function generateDiagrams(graphType){
             concLoadParams.positions = [(beamLength / 4), null];
             concLoadParams.weights = [5000, null];
 
-            UDLoadParams.weights = [2, null];
+            UDLoadParams.weights = [40, null];
 
             var concVals = calcSFBMConcMid(beamLength, concLoadParams);
             var UDVals = calcSFBMUDLMid(beamLength, UDLoadParams);
@@ -46,7 +46,7 @@ function generateDiagrams(graphType){
             concLoadParams.positions = [(beamLength / 4), (3 * beamLength / 4)];
             concLoadParams.weights = [5000, 5000];
 
-            UDLoadParams.weights = [2000, 2000];
+            UDLoadParams.weights = [40, 40];
 
             var concVals = calcSFBMConcMid(beamLength, concLoadParams);
             var UDVals = calcSFBMUDLMid(beamLength, UDLoadParams);

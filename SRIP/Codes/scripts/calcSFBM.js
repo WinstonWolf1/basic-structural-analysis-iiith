@@ -139,9 +139,9 @@ function calcSFBMUDLMid(beamLength, loads) {
 		loadWt[1] = 0;
 	}
 	if(loadWt[1] !== null && loadWt[1] === loadWt[0]){
-		supportRxns[0] =  6 * loadWt[0] * spanLength / 16;
-		supportRxns[1] = 20 * loadWt[0] * spanLength / 16;
-		supportRxns[2] =  6 * loadWt[0] * spanLength / 16;
+		supportRxns[0] =  3 * loadWt[0] * spanLength / 8;
+		supportRxns[1] = 10 * loadWt[0] * spanLength / 8;
+		supportRxns[2] =  3 * loadWt[0] * spanLength / 8;
 	}
 
 	for(let i = 0; i < n; i++){
@@ -152,7 +152,7 @@ function calcSFBMUDLMid(beamLength, loads) {
 		}
 		else{
 			shearForce[i] = supportRxns[0] - (loadWt[0] * spanLength) + supportRxns[1] - (loadWt[1] * (values_x[i] - spanLength));
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength * (values_x[i] - spanLength)) + (supportRxns[1] * (values_x[i] - spanLength)) - (loadWt[1] * ((values_x[i] - spanLength) ** 2));
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength * (values_x[i] - (spanLength / 2))) + (supportRxns[1] * (values_x[i] - spanLength)) - (loadWt[1] * ((values_x[i] - spanLength) ** 2) / 2);
 		}
 	}
 	values_x[n] = beamLength;
