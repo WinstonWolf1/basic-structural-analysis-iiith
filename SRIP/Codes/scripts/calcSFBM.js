@@ -175,20 +175,24 @@ function calcSFBMUDLMidUneq(beamLength, loads, middleSupportPos){
 	
 	let loadWt = loads.weights;
 
-	let midSupportMoment = -loadWt[0] / 8 * ((spanLength[0] ** 3 + spanLength[1] ** 3) / (beamLength));
-	supportRxns[0] = ((midSupportMoment / spanLength[0]) + (loadWt[0] * spanLength[0] / 2));
-	supportRxns[2] = ((midSupportMoment / spanLength[1]) + (loadWt[0] * spanLength[1] / 2));
-	supportRxns[1] = loadWt[0] * (beamLength) - supportRxns[0] - supportRxns[2];
+	let midSupportMoment = 0;
+
+	if((loadWt[1] !== null) && loadWt[0] === loadWt[1]){
+		let midSupportMoment = - loadWt[0] * (((spanLength[0] ** 3) + (spanLength[1] ** 3)) / beamLength) / 8;
+		supportRxns[0] = ((midSupportMoment / spanLength[0]) + (loadWt[0] * spanLength[0] / 2));
+		supportRxns[2] = ((midSupportMoment / spanLength[1]) + (loadWt[0] * spanLength[1] / 2));
+		supportRxns[1] = (loadWt[0] * beamLength) - supportRxns[0] - supportRxns[2];
+	}
 
 	for(let i = 0; i < n; i++){
 		values_x[i] = (i * delta_x);
 		if (values_x[i] < middleSupportPos) {
 			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]);
-			bendMoment[i] = supportRxns[0] * values_x[i] - (loadWt[0] * (values_x ** 2));
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] ** 2) / 2);
 		}
 		else{
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]) + supportRxns[1] + (loadWt[1] * (values_x[i] - spanLength));
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * values_x[i] * values_x[i]) + (supportRxns[1] * (values_x[i] - spanLength)) + (loadWt[1] * (values_x[i] - spanLength) * (values_x[i] - spanLength));
+			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]) + supportRxns[1] - (loadWt[1] * (values_x[i] - spanLength[0]));
+			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength[0] * (values_x[i] - (spanLength[0] / 2))) + (supportRxns[1] * (values_x[i] - spanLength[0])) - (loadWt[1] * ((values_x[i] - spanLength[0]) ** 2) / 2);
 		}
 	}
 	values_x[n] = beamLength;

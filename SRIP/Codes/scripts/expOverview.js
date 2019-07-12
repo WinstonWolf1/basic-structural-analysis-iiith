@@ -59,7 +59,7 @@ function generateDiagrams(graphType){
             concLoadParams.positions = [(middleSupportPos / 2), ((beamLength + middleSupportPos) / 2)];
             concLoadParams.weights = [5000, 6000];
 
-            UDLoadParams.weights = [2000, null];
+            UDLoadParams.weights = [40, 40];
 
             var concVals = calcSFBMConcMidUneq(beamLength, concLoadParams, middleSupportPos);
             var UDVals = calcSFBMUDLMidUneq(beamLength, UDLoadParams, middleSupportPos);
