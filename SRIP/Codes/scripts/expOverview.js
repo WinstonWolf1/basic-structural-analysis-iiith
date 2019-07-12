@@ -84,24 +84,40 @@ function selectSFBMOneSpan(){
     clearGraphs();
     makeActive('SFBMOneSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMOneSpan')");
-    document.getElementById("concForceDiagram").setAttribute("data", "res/ConcOneSpan.svg");
-    document.getElementById("UDForceDiagram").setAttribute("data", "res/UDOneSpan.svg");
+    let cfd = document.getElementById("concForceDiagram")
+    cfd.setAttribute("data", "res/ConcOneSpan.svg");
+    let ufd = document.getElementById("UDForceDiagram")
+    ufd.setAttribute("data", "res/UDOneSpan.svg");
+
+    cfd.data = cfd.data;
+    ufd.data = ufd.data;
 }
 
 function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMBothSpan')");
-    document.getElementById("concForceDiagram").setAttribute("data", "res/ConcBothSpan.svg");
-    document.getElementById("UDForceDiagram").setAttribute("data", "res/UDBothSpan.svg");
+    let cfd = document.getElementById("concForceDiagram")
+    cfd.setAttribute("data", "res/ConcBothSpan.svg");
+    let ufd = document.getElementById("UDForceDiagram")
+    ufd.setAttribute("data", "res/UDBothSpan.svg");
+
+    cfd.data = cfd.data;
+    ufd.data = ufd.data;
 }
 
 function selectSFBMUneqSpan(){
     clearGraphs();
     makeActive('SFBMUneqSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMUneqSpan')");
-    document.getElementById("concForceDiagram").setAttribute("data", "res/ConcUneqSpan.svg");
-    document.getElementById("UDForceDiagram").setAttribute("data", "res/UDUneqSpan.svg");
+    let cfd = document.getElementById("concForceDiagram");
+    let ufd = document.getElementById("UDForceDiagram")
+    cfd.setAttribute("data", "res/ConcUneqSpan.svg");
+    ufd.setAttribute("data", "res/UDUneqSpan.svg");
+
+    cfd.data = cfd.data;
+    ufd.data = ufd.data;
+
 }
 
 function clearGraphs(){
