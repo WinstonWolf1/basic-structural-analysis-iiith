@@ -67,7 +67,8 @@ function generateDiagrams(graphType){
     }
     showgraph("conc", concVals);
     showgraph("UD", UDVals);
-    document.getElementById("generateDiagramButton").disabled = true;
+    // document.getElementById("generateDiagramButton").disabled = true;
+    document.getElementById("generateDiagramButton").style.display = "none";
 }
 
 function testgraph(){
@@ -115,6 +116,7 @@ function makeActive(divID){
     document.getElementById("SFBMBothSpanDiv").classList.remove("active");
     document.getElementById("SFBMUneqSpanDiv").classList.remove("active");
     document.getElementById(divID).classList.add("active");
-    document.getElementById("generateDiagramButton").disabled = false;
+    document.getElementById("generateDiagramButton").style.display = "block";
+    // document.getElementById("generateDiagramButton").disabled = false;
 }
 
