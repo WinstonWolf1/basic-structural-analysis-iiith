@@ -86,9 +86,9 @@ function selectSFBMOneSpan(){
     makeActive('SFBMOneSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMOneSpan')");
     let cfd = document.getElementById("concForceDiagram")
-    cfd.setAttribute("data", "res/ConcOneSpan.svg");
+    cfd.setAttribute("data", "ConcOneSpan.svg");
     let ufd = document.getElementById("UDForceDiagram")
-    ufd.setAttribute("data", "res/UDOneSpan.svg");
+    ufd.setAttribute("data", "UDOneSpan.svg");
 
     cfd.data = cfd.data;
     ufd.data = ufd.data;
@@ -99,9 +99,9 @@ function selectSFBMBothSpan(){
     makeActive('SFBMBothSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMBothSpan')");
     let cfd = document.getElementById("concForceDiagram");
-    cfd.setAttribute("data", "res/ConcBothSpan.svg");
+    cfd.setAttribute("data", "ConcBothSpan.svg");
     let ufd = document.getElementById("UDForceDiagram");
-    ufd.setAttribute("data", "res/UDBothSpan.svg");
+    ufd.setAttribute("data", "UDBothSpan.svg");
 
     cfd.data = cfd.data;
     ufd.data = ufd.data;
@@ -113,8 +113,8 @@ function selectSFBMUneqSpan(){
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMUneqSpan')");
     let cfd = document.getElementById("concForceDiagram");
     let ufd = document.getElementById("UDForceDiagram")
-    cfd.setAttribute("data", "res/ConcUneqSpan.svg");
-    ufd.setAttribute("data", "res/UDUneqSpan.svg");
+    cfd.setAttribute("data", "ConcUneqSpan.svg");
+    ufd.setAttribute("data", "UDUneqSpan.svg");
 
     cfd.data = cfd.data;
     ufd.data = ufd.data;
