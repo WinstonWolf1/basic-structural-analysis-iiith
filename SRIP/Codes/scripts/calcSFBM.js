@@ -9,7 +9,7 @@ function calcSFBMConcMid(beamLength, loads){
 	// beamLength = beamParameters.beamLength;
 	var n = 5000; //Number of discretisations of x axis
 	var delta_x = beamLength / n; // Value to increment x
-	var values_x = new Array(n+1);
+	var xValues = new Array(n+1);
 	var shearForce = new Array(n+1);
 	var bendMoment = new Array(n+1);
 	var supportRxns = new Array(3);
@@ -39,31 +39,31 @@ function calcSFBMConcMid(beamLength, loads){
 	}
 
 	for(let i = 0; i < n; i++){
-		values_x[i] = (i * delta_x);
-		switch(getportion(values_x[i], beamLength, loadPos)) {
+		xValues[i] = (i * delta_x);
+		switch(getportion(xValues[i], beamLength, loadPos)) {
 			case 1:
 				shearForce[i] = supportRxns[0];
-				bendMoment[i] = supportRxns[0] * values_x[i];
+				bendMoment[i] = supportRxns[0] * xValues[i];
 				break;
 			case 2:
 				shearForce[i] = supportRxns[0] - loadWt[0];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0]));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0]));
 				break;
 			case 3:
 				shearForce[i] = supportRxns[0] - loadWt[0] + supportRxns[1];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0])) + (supportRxns[1] * (values_x[i] - middleSupportPos));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0])) + (supportRxns[1] * (xValues[i] - middleSupportPos));
 				break;
 			case 4:
 				shearForce[i] = supportRxns[0] - loadWt[0] + supportRxns[1] - loadWt[1];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0])) + (supportRxns[1] * (values_x[i] - middleSupportPos)) - (loadWt[1] * (values_x[i] - loadPos[1]));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0])) + (supportRxns[1] * (xValues[i] - middleSupportPos)) - (loadWt[1] * (xValues[i] - loadPos[1]));
 				break;
 		}
 	}
-	values_x[n] = beamLength;
+	xValues[n] = beamLength;
 	shearForce[n] = 0;
 	bendMoment[n] = 0;
 
-	return {values_x : values_x,
+	return {xValues : xValues,
 			shearForce : shearForce,
 			bendMoment : bendMoment};
 
@@ -72,7 +72,7 @@ function calcSFBMConcMid(beamLength, loads){
 function calcSFBMConcMidUneq(beamLength, loads, middleSupportPos){
 	let n = 5000; //Number of discretisations of x axis
 	let delta_x = beamLength / n; // Value to increment x
-	let values_x = new Array(n+1);
+	let xValues = new Array(n+1);
 	let shearForce = new Array(n+1);
 	let bendMoment = new Array(n+1);
 	let supportRxns = new Array(3);
@@ -87,31 +87,31 @@ function calcSFBMConcMidUneq(beamLength, loads, middleSupportPos){
 	supportRxns[1] = loadWt[0] + loadWt[1] - supportRxns[0] - supportRxns[2];
 
 	for(let i = 0; i < n; i++){
-		values_x[i] = (i * delta_x);
-		switch(getportion(values_x[i], beamLength, loadPos, middleSupportPos)){
+		xValues[i] = (i * delta_x);
+		switch(getportion(xValues[i], beamLength, loadPos, middleSupportPos)){
 			case 1:
 				shearForce[i] = supportRxns[0];
-				bendMoment[i] = supportRxns[0] * values_x[i];
+				bendMoment[i] = supportRxns[0] * xValues[i];
 				break;
 			case 2:
 				shearForce[i] = supportRxns[0] - loadWt[0];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0]));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0]));
 				break;
 			case 3:
 				shearForce[i] = supportRxns[0] - loadWt[0] + supportRxns[1];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0])) + (supportRxns[1] * (values_x[i] - middleSupportPos));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0])) + (supportRxns[1] * (xValues[i] - middleSupportPos));
 				break;
 			case 4:
 				shearForce[i] = supportRxns[0] - loadWt[0] + supportRxns[1] - loadWt[1];
-				bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] - loadPos[0])) + (supportRxns[1] * (values_x[i] - middleSupportPos)) - (loadWt[1] * (values_x[i] - loadPos[1]));
+				bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] - loadPos[0])) + (supportRxns[1] * (xValues[i] - middleSupportPos)) - (loadWt[1] * (xValues[i] - loadPos[1]));
 				break;
 		}
 	}
-	values_x[n] = beamLength;
+	xValues[n] = beamLength;
 	shearForce[n] = 0;
 	bendMoment[n] = 0;
 
-	return {values_x : values_x,
+	return {xValues : xValues,
 			shearForce : shearForce,
 			bendMoment : bendMoment};
 
@@ -121,7 +121,7 @@ function calcSFBMUDLMid(beamLength, loads) {
 	
 	let n = 5000; //Number of discretisations of x axis
 	let delta_x = beamLength / n; // Value to increment x
-	let values_x = new Array(n+1);
+	let xValues = new Array(n+1);
 	let shearForce = new Array(n+1);
 	let bendMoment = new Array(n+1);
 	let supportRxns = new Array(3);
@@ -145,21 +145,21 @@ function calcSFBMUDLMid(beamLength, loads) {
 	}
 
 	for(let i = 0; i < n; i++){
-		values_x[i] = (i * delta_x);
-		if (values_x[i] < middleSupportPos) {
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]);
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] ** 2) / 2);
+		xValues[i] = (i * delta_x);
+		if (xValues[i] < middleSupportPos) {
+			shearForce[i] = supportRxns[0] - (loadWt[0] * xValues[i]);
+			bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] ** 2) / 2);
 		}
 		else{
-			shearForce[i] = supportRxns[0] - (loadWt[0] * spanLength) + supportRxns[1] - (loadWt[1] * (values_x[i] - spanLength));
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength * (values_x[i] - (spanLength / 2))) + (supportRxns[1] * (values_x[i] - spanLength)) - (loadWt[1] * ((values_x[i] - spanLength) ** 2) / 2);
+			shearForce[i] = supportRxns[0] - (loadWt[0] * spanLength) + supportRxns[1] - (loadWt[1] * (xValues[i] - spanLength));
+			bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * spanLength * (xValues[i] - (spanLength / 2))) + (supportRxns[1] * (xValues[i] - spanLength)) - (loadWt[1] * ((xValues[i] - spanLength) ** 2) / 2);
 		}
 	}
-	values_x[n] = beamLength;
+	xValues[n] = beamLength;
 	shearForce[n] = 0;
 	bendMoment[n] = 0;
 
-	return {values_x : values_x,
+	return {xValues : xValues,
 			shearForce : shearForce,
 			bendMoment : bendMoment};    
 }
@@ -167,7 +167,7 @@ function calcSFBMUDLMid(beamLength, loads) {
 function calcSFBMUDLMidUneq(beamLength, loads, middleSupportPos){
 	let n = 5000; //Number of discretisations of x axis
 	let delta_x = beamLength / n; // Value to increment x
-	let values_x = new Array(n+1);
+	let xValues = new Array(n+1);
 	let shearForce = new Array(n+1);
 	let bendMoment = new Array(n+1);
 	let supportRxns = new Array(3);
@@ -185,22 +185,22 @@ function calcSFBMUDLMidUneq(beamLength, loads, middleSupportPos){
 	}
 
 	for(let i = 0; i < n; i++){
-		values_x[i] = (i * delta_x);
-		if (values_x[i] < middleSupportPos) {
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]);
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * (values_x[i] ** 2) / 2);
+		xValues[i] = (i * delta_x);
+		if (xValues[i] < middleSupportPos) {
+			shearForce[i] = supportRxns[0] - (loadWt[0] * xValues[i]);
+			bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * (xValues[i] ** 2) / 2);
 		}
 		else{
-			shearForce[i] = supportRxns[0] - (loadWt[0] * values_x[i]) + supportRxns[1] - (loadWt[1] * (values_x[i] - spanLength[0]));
-			bendMoment[i] = (supportRxns[0] * values_x[i]) - (loadWt[0] * spanLength[0] * (values_x[i] - (spanLength[0] / 2))) + (supportRxns[1] * (values_x[i] - spanLength[0])) - (loadWt[1] * ((values_x[i] - spanLength[0]) ** 2) / 2);
+			shearForce[i] = supportRxns[0] - (loadWt[0] * xValues[i]) + supportRxns[1] - (loadWt[1] * (xValues[i] - spanLength[0]));
+			bendMoment[i] = (supportRxns[0] * xValues[i]) - (loadWt[0] * spanLength[0] * (xValues[i] - (spanLength[0] / 2))) + (supportRxns[1] * (xValues[i] - spanLength[0])) - (loadWt[1] * ((xValues[i] - spanLength[0]) ** 2) / 2);
 		}
 	}
-	values_x[n] = beamLength;
+	xValues[n] = beamLength;
 	shearForce[n] = 0;
 	bendMoment[n] = 0;
 
 
-	return {values_x : values_x,
+	return {xValues : xValues,
 			shearForce : shearForce,
 			bendMoment : bendMoment};
 }
