@@ -6,6 +6,7 @@ function showgraph(type, vals) {
     let SFdivID = type + "SFD";
     let BMdivID = type + "BMD";
 
+//  Disabling modebar as it triggers the scroll bars inside the graph divs.
     let plotOptions = {
         displayModeBar: false
     };
@@ -97,9 +98,9 @@ function selectSFBMBothSpan(){
     clearGraphs();
     makeActive('SFBMBothSpanDiv');
     document.getElementById("generateDiagramButton").setAttribute("onClick", "generateDiagrams('SFBMBothSpan')");
-    let cfd = document.getElementById("concForceDiagram")
+    let cfd = document.getElementById("concForceDiagram");
     cfd.setAttribute("data", "res/ConcBothSpan.svg");
-    let ufd = document.getElementById("UDForceDiagram")
+    let ufd = document.getElementById("UDForceDiagram");
     ufd.setAttribute("data", "res/UDBothSpan.svg");
 
     cfd.data = cfd.data;
